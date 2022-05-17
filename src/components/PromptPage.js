@@ -57,6 +57,9 @@ function PromptPage() {
     return (
         <div className="App">
             <h1>Fun with OpenAI!</h1>
+            <p className="lighttext">Explore the GPT-3 API, an AI model created by OpenAI, by entering your own
+                prompts or selecting one of the example prompts below.
+            </p>
             <div className="container">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="userInput">
@@ -65,7 +68,7 @@ function PromptPage() {
                             type="text"
                             id="userInput"
                             name="userInput"
-                            value={userInput}
+                            value={isLoading ? "Generating response..." : userInput}
                             onChange={e => setUserInput(e.target.value)}
                             required
                             aria-required="true"
@@ -85,7 +88,12 @@ function PromptPage() {
                 </form>
             </div>
             <h2 ref={responseRef}>Responses</h2>
-            <p>Click try it again to see if a different response is generated!</p>
+            {pastResponses.length !== 0
+                ? <p className="lighttext">
+                    Click "try it again" to see if a different response is generated!
+                </p>
+                : <p className="lighttext">Enter a prompt to see a response!</p>
+            }           
             {isLoading && <p>Generating response...</p>}
             <div className="response-container">
                 {pastResponses.length !== 0 && pastResponses.map((entry, index) => (

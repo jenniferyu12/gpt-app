@@ -53,6 +53,10 @@ p {
   color: var(--storm-color);
 }
 
+.lighttext {
+  color: var(--beige-color);
+}
+
 form {
   display: flex;
   flex-direction: column;
