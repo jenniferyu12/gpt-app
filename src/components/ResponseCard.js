@@ -1,10 +1,5 @@
-function ResponseCard({ prompt, response, handleSubmit, setUserInput }) {
+function ResponseCard({ prompt, response, handleSubmit }) {
 
-    const tryAgain = async (e) => {
-        console.log(prompt);
-        setUserInput(prompt);
-        await handleSubmit(e);
-    }
 
     return (
         <div className="response-card">
@@ -14,9 +9,7 @@ function ResponseCard({ prompt, response, handleSubmit, setUserInput }) {
             <p>{response}</p>
             <button 
             className="tertiarybtn" 
-            onClick={(e) => {
-                handleSubmit(e, prompt);
-            }}>
+            onClick={(e) => handleSubmit(e, prompt)}>
                 Try it again!
             </button>
         </div>
