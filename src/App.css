@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+
+:root {
+    /**********  COLORS  **********/
+
+    /*  Subtitles, links, highlighted menu elements, buttons  */
+    --storm-color: #4F6367;
+    /*  Website buttons - hover  */
+    --medium-blue-color: #7A9E9F;
+    /*  Lines  */
+    --light-blue-color: #B8D8D8;
+    /*  Form fields not in use  */
+    --beige-color: #EEF5DB;
+    /*  Menu/light hovers  */
+    --coral-color: #FE5F55;
+    --dark-coral-color: #a02d22;
+
+    /*************  FONTS  ************/
+    --primary-font-oxygen: "Oxygen", sans-serif;
+}
+
+.App {
+  background-color: var(--medium-blue-color);
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: var(--primary-font-oxygen);
+  font-size: 3em;
+  color: white;
+}
+
+h2 {
+  font-family: var(--primary-font-oxygen);
+  font-size: 2em;
+  color: white;
+}
+
+h3 {
+  font-family: var(--primary-font-oxygen);
+  font-size: 1.3em;
+  color: var(--storm-color);
+}
+
+p {
+  color: var(--storm-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: var(--storm-color);
+  font-size: 2rem;
+}
+
+textarea {
+  width: 80%;
+  border-radius: 8px;
+  margin: 7% 15px;
+  font-size: 1.3rem;
+  padding: 3%;
+  color: var(--storm-color);
+  border: 2px solid var(--medium-blue-color);
+}
+
+.primarybtn {
+  background-color: var(--coral-color);
+  padding: 15px;
+  margin: 0px 7%;
+  width: 120px;
+  border-style: none;
+  border-radius: 8px;
+  color: var(--beige-color);
+  font-size: 1.5rem;
+}
+
+.primarybtn:hover {
+  background-color: var(--dark-coral-color);
+}
+
+.container {
+  background-color: var(--light-blue-color);
+  color: white;
+  border-radius: 8px;
+  width: 50%;
+  height: auto;
+  margin: 30px;
+  padding: 40px;
+  box-shadow: 3px 3px 20px var(--storm-color);
+}
+
+.response-container {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 60%;
+  margin-bottom: 30px;
+}
+
+.response-card {
+  background-color: var(--light-blue-color);
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  text-align: left;
+}
