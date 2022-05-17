@@ -1,10 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import ResponseCard from './ResponseCard';
 
 function PromptPage() {
     const [userInput, setUserInput] = useState();
     const [pastResponses, setPastResponses] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const responseRef = useRef();
+
+    const exampleList = [
+        "List 10 singers from the 2000s",
+        "Where was John Tavares born?",
+        "Tell me a joke!",
+        "How's the weather in Toronto?"
+    ]
+
+    useEffect(() => {
+        responseRef.current.scrollIntoView();
+    }, [pastResponses])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,7 +44,6 @@ function PromptPage() {
             prompt: userInput,
             res: response.choices[0].text
         };
-        console.log(pastResponses);
         pastResponses.push(responsePair)
         setPastResponses(pastResponses);
         setUserInput("");
@@ -57,8 +68,16 @@ function PromptPage() {
                             rows={10}
                         />
                     </label>
-                    <></>
-                    <button className="primarybtn">Submit</button>
+                    <div className="example-container">
+                        <p>Example Prompts:</p>
+                        {exampleList.map(example => (
+                            <button className="secondarybtn" 
+                                onClick={e => setUserInput(example)}>
+                                {example}
+                            </button>
+                        ))}
+                    </div>
+                    <button className="primarybtn" ref={responseRef}>Submit</button>
                 </form>
             </div>
             {pastResponses.length !== 0 && <h2>Responses</h2>}

@@ -88,6 +88,20 @@ textarea {
   background-color: var(--dark-coral-color);
 }
 
+.secondarybtn {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  border-style: none;
+  border-radius: 8px;
+  color: var(--storm-color);
+  font-size: 1.2rem;
+}
+
+.secondarybtn:hover {
+  background-color: var(--beige-color);
+}
+
 .container {
   background-color: var(--light-blue-color);
   color: white;
@@ -97,6 +111,10 @@ textarea {
   margin: 30px;
   padding: 40px;
   box-shadow: 3px 3px 20px var(--storm-color);
+}
+
+.example-container {
+  margin-bottom: 50px;
 }
 
 .response-container {
