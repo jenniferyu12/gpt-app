@@ -102,6 +102,20 @@ textarea {
   background-color: var(--beige-color);
 }
 
+.tertiarybtn {
+  background-color: var(--coral-color);
+  padding: 10px;
+  margin: 10px 0;
+  border-style: none;
+  border-radius: 8px;
+  color: var(--beige-color);
+  font-size: 1rem;
+}
+
+.tertiarybtn:hover {
+  background-color: var(--dark-coral-color);
+}
+
 .container {
   background-color: var(--light-blue-color);
   color: white;

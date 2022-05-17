@@ -18,11 +18,14 @@ function PromptPage() {
         responseRef.current.scrollIntoView({behavior: "smooth"});
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e, input = '') => {
         e.preventDefault();
         setIsLoading(true);
+
+        console.log(userInput);
+
         const data = {
-            prompt: userInput,
+            prompt: input ? input : userInput,
             temperature: 0.5,
             max_tokens: 64,
             top_p: 1.0,
@@ -41,7 +44,7 @@ function PromptPage() {
 
         const response = await res.json();
         const responsePair = {
-            prompt: userInput,
+            prompt: input ? input : userInput,
             res: response.choices[0].text
         };
         pastResponses.push(responsePair);
@@ -70,7 +73,7 @@ function PromptPage() {
                         />
                     </label>
                     <div className="example-container">
-                        <p>Example Prompts:</p>
+                        <p>Example Prompts (click to submit):</p>
                         {exampleList.map(example => (
                             <button className="secondarybtn" 
                                 onClick={e => setUserInput(example)}>
@@ -81,13 +84,17 @@ function PromptPage() {
                     <button className="primarybtn">Submit</button>
                 </form>
             </div>
-            {pastResponses.length !== 0 && <h2 ref={responseRef}>Responses</h2>}
+            <h2 ref={responseRef}>Responses</h2>
+            <p>Click try it again to see if a different response is generated!</p>
             {isLoading && <p>Generating response...</p>}
             <div className="response-container">
-                {pastResponses.length !== 0 && pastResponses.map(entry => (
+                {pastResponses.length !== 0 && pastResponses.map((entry, index) => (
                     <ResponseCard
+                        key={index}
                         prompt={entry.prompt}
                         response={entry.res}
+                        handleSubmit={handleSubmit}
+                        setUserInput={setUserInput}
                     />
                 ))}
             </div>
