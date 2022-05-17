@@ -10,7 +10,7 @@ function PromptPage() {
     const exampleList = [
         "List 10 singers from the 2000s",
         "Where was John Tavares born?",
-        "Tell me a joke!",
+        "My name is Jennifer Yu",
         "How's the weather in Toronto?"
     ]
 
