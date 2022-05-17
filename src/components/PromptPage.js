@@ -14,9 +14,9 @@ function PromptPage() {
         "How's the weather in Toronto?"
     ]
 
-    useEffect(() => {
-        responseRef.current.scrollIntoView();
-    }, [pastResponses])
+    const scrollDown = () => {
+        responseRef.current.scrollIntoView({behavior: "smooth"});
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,10 +44,11 @@ function PromptPage() {
             prompt: userInput,
             res: response.choices[0].text
         };
-        pastResponses.push(responsePair)
+        pastResponses.push(responsePair);
         setPastResponses(pastResponses);
         setUserInput("");
         setIsLoading(false);
+        scrollDown();
     }
 
     return (
@@ -55,7 +56,7 @@ function PromptPage() {
             <h1>Fun with OpenAI!</h1>
             <div className="container">
                 <form onSubmit={handleSubmit}>
-                    <label for="userInput">
+                    <label htmlFor="userInput">
                         Enter your prompt:
                         <textarea
                             type="text"
@@ -77,10 +78,10 @@ function PromptPage() {
                             </button>
                         ))}
                     </div>
-                    <button className="primarybtn" ref={responseRef}>Submit</button>
+                    <button className="primarybtn">Submit</button>
                 </form>
             </div>
-            {pastResponses.length !== 0 && <h2>Responses</h2>}
+            {pastResponses.length !== 0 && <h2 ref={responseRef}>Responses</h2>}
             {isLoading && <p>Generating response...</p>}
             <div className="response-container">
                 {pastResponses.length !== 0 && pastResponses.map(entry => (
